@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ory-client (0.0.1.alpha21)
+    ory-client (0.0.1.alpha23)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -25,7 +25,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    psych (4.0.1)
+    psych (4.0.2)
     rainbow (3.0.0)
     rake (13.0.6)
     rspec (3.10.0)
@@ -40,7 +40,7 @@ GEM
     rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
-    rspec-support (3.10.2)
+    rspec-support (3.10.3)
     rubocop (0.66.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -65,4 +65,4 @@ DEPENDENCIES
   rubocop (~> 0.66.0)
 
 BUNDLED WITH
-   2.2.27
+   2.2.30

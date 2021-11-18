@@ -4,8 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | The ID of the Identity JSON Schema | [optional] |
+| **created_at** | **Time** | The Schema&#39;s Creation Date | [readonly] |
+| **id** | **String** |  |  |
+| **name** | **String** | The schema name  This is set by the user and is for them to easily recognise their schema |  |
 | **schema** | **Object** | The actual Identity JSON Schema | [optional] |
+| **updated_at** | **Time** | Last Time Schema was Updated | [readonly] |
 
 ## Example
 
@@ -13,8 +16,11 @@
 require 'ory-client'
 
 instance = OryClient::IdentitySchema.new(
+  created_at: null,
   id: null,
-  schema: null
+  name: CustomerIdentity,
+  schema: null,
+  updated_at: null
 )
 ```
 
