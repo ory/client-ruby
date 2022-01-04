@@ -25,10 +25,8 @@ require 'time'
 require 'ory-client'
 # setup authorization
 OryClient.configure do |config|
-  # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # Configure Bearer authorization: oryAccessToken
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OryClient::V0alpha0Api.new
@@ -98,10 +96,8 @@ require 'time'
 require 'ory-client'
 # setup authorization
 OryClient.configure do |config|
-  # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # Configure Bearer authorization: oryAccessToken
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OryClient::V0alpha0Api.new
@@ -169,10 +165,8 @@ require 'time'
 require 'ory-client'
 # setup authorization
 OryClient.configure do |config|
-  # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # Configure Bearer authorization: oryAccessToken
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OryClient::V0alpha0Api.new
@@ -237,10 +231,8 @@ require 'time'
 require 'ory-client'
 # setup authorization
 OryClient.configure do |config|
-  # Configure API key authorization: oryAccessToken
-  config.api_key['oryAccessToken'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['oryAccessToken'] = 'Bearer'
+  # Configure Bearer authorization: oryAccessToken
+  config.access_token = 'YOUR_BEARER_TOKEN'
 end
 
 api_instance = OryClient::V0alpha0Api.new

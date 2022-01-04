@@ -12,7 +12,7 @@
 | **hosts** | **Array&lt;String&gt;** |  |  |
 | **id** | **String** |  |  |
 | **kratos_config_version** | **String** | The Project&#39;s Kratos Config Version | [optional][readonly] |
-| **kratos_custom_schema_id** | [**NullUUID**](NullUUID.md) |  | [optional] |
+| **kratos_custom_schema_id** | **String** |  | [optional] |
 | **login_ui_url** | **String** | Self-Service Login UI URL  Sets the UI URL for the login UI. If left empty, this will use Ory&#39;s hosted pages. | [optional] |
 | **lookup_secret** | [**ProjectLookupSecretConfig**](ProjectLookupSecretConfig.md) |  | [optional] |
 | **name** | **String** | The project&#39;s name. |  |
