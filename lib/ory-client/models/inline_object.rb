@@ -14,40 +14,14 @@ require 'date'
 require 'time'
 
 module OryClient
-  # A singular authenticator used during authentication / login.
-  class SessionAuthenticationMethod
-    # When the authentication challenge was completed.
-    attr_accessor :completed_at
-
-    attr_accessor :method
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class InlineObject
+    # Project ID  The Project ID you want to set active.  format: uuid
+    attr_accessor :project_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'completed_at' => :'completed_at',
-        :'method' => :'method'
+        :'project_id' => :'project_id'
       }
     end
 
@@ -59,8 +33,7 @@ module OryClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'completed_at' => :'Time',
-        :'method' => :'String'
+        :'project_id' => :'String'
       }
     end
 
@@ -74,23 +47,19 @@ module OryClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::SessionAuthenticationMethod` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::InlineObject` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::SessionAuthenticationMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::InlineObject`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'completed_at')
-        self.completed_at = attributes[:'completed_at']
-      end
-
-      if attributes.key?(:'method')
-        self.method = attributes[:'method']
+      if attributes.key?(:'project_id')
+        self.project_id = attributes[:'project_id']
       end
     end
 
@@ -98,25 +67,18 @@ module OryClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @project_id.nil?
+        invalid_properties.push('invalid value for "project_id", project_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      method_validator = EnumAttributeValidator.new('String', ["link_recovery", "password", "totp", "oidc", "webauthn"])
-      return false unless method_validator.valid?(@method)
+      return false if @project_id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] method Object to be assigned
-    def method=(method)
-      validator = EnumAttributeValidator.new('String', ["link_recovery", "password", "totp", "oidc", "webauthn"])
-      unless validator.valid?(method)
-        fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
-      end
-      @method = method
     end
 
     # Checks equality by comparing each attribute.
@@ -124,8 +86,7 @@ module OryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          completed_at == o.completed_at &&
-          method == o.method
+          project_id == o.project_id
     end
 
     # @see the `==` method
@@ -137,7 +98,7 @@ module OryClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [completed_at, method].hash
+      [project_id].hash
     end
 
     # Builds the object from hash
