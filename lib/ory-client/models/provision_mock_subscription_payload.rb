@@ -14,47 +14,16 @@ require 'date'
 require 'time'
 
 module OryClient
-  # This flow is used when an identity wants to update settings (e.g. profile data, passwords, ...) in a selfservice manner.  We recommend reading the [User Settings Documentation](../self-service/flows/user-settings)
-  class SelfServiceSettingsFlow
-    # Active, if set, contains the registration method that is being used. It is initially not set.
-    attr_accessor :active
+  class ProvisionMockSubscriptionPayload
+    attr_accessor :identity_id
 
-    # ExpiresAt is the time (UTC) when the flow expires. If the user still wishes to update the setting, a new flow has to be initiated.
-    attr_accessor :expires_at
-
-    attr_accessor :id
-
-    attr_accessor :identity
-
-    # IssuedAt is the time (UTC) when the flow occurred.
-    attr_accessor :issued_at
-
-    # RequestURL is the initial URL that was requested from Ory Kratos. It can be used to forward information contained in the URL's path or query for example.
-    attr_accessor :request_url
-
-    # ReturnTo contains the requested return_to URL.
-    attr_accessor :return_to
-
-    attr_accessor :state
-
-    # The flow type can either be `api` or `browser`.
-    attr_accessor :type
-
-    attr_accessor :ui
+    attr_accessor :plan_or_price
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'active' => :'active',
-        :'expires_at' => :'expires_at',
-        :'id' => :'id',
-        :'identity' => :'identity',
-        :'issued_at' => :'issued_at',
-        :'request_url' => :'request_url',
-        :'return_to' => :'return_to',
-        :'state' => :'state',
-        :'type' => :'type',
-        :'ui' => :'ui'
+        :'identity_id' => :'identity_id',
+        :'plan_or_price' => :'plan_or_price'
       }
     end
 
@@ -66,16 +35,8 @@ module OryClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'active' => :'String',
-        :'expires_at' => :'Time',
-        :'id' => :'String',
-        :'identity' => :'Identity',
-        :'issued_at' => :'Time',
-        :'request_url' => :'String',
-        :'return_to' => :'String',
-        :'state' => :'SelfServiceSettingsFlowState',
-        :'type' => :'String',
-        :'ui' => :'UiContainer'
+        :'identity_id' => :'String',
+        :'plan_or_price' => :'String'
       }
     end
 
@@ -89,55 +50,23 @@ module OryClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::SelfServiceSettingsFlow` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::ProvisionMockSubscriptionPayload` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::SelfServiceSettingsFlow`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::ProvisionMockSubscriptionPayload`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'active')
-        self.active = attributes[:'active']
+      if attributes.key?(:'identity_id')
+        self.identity_id = attributes[:'identity_id']
       end
 
-      if attributes.key?(:'expires_at')
-        self.expires_at = attributes[:'expires_at']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'identity')
-        self.identity = attributes[:'identity']
-      end
-
-      if attributes.key?(:'issued_at')
-        self.issued_at = attributes[:'issued_at']
-      end
-
-      if attributes.key?(:'request_url')
-        self.request_url = attributes[:'request_url']
-      end
-
-      if attributes.key?(:'return_to')
-        self.return_to = attributes[:'return_to']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'ui')
-        self.ui = attributes[:'ui']
+      if attributes.key?(:'plan_or_price')
+        self.plan_or_price = attributes[:'plan_or_price']
       end
     end
 
@@ -145,32 +74,12 @@ module OryClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @expires_at.nil?
-        invalid_properties.push('invalid value for "expires_at", expires_at cannot be nil.')
+      if @identity_id.nil?
+        invalid_properties.push('invalid value for "identity_id", identity_id cannot be nil.')
       end
 
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @identity.nil?
-        invalid_properties.push('invalid value for "identity", identity cannot be nil.')
-      end
-
-      if @issued_at.nil?
-        invalid_properties.push('invalid value for "issued_at", issued_at cannot be nil.')
-      end
-
-      if @request_url.nil?
-        invalid_properties.push('invalid value for "request_url", request_url cannot be nil.')
-      end
-
-      if @state.nil?
-        invalid_properties.push('invalid value for "state", state cannot be nil.')
-      end
-
-      if @ui.nil?
-        invalid_properties.push('invalid value for "ui", ui cannot be nil.')
+      if @plan_or_price.nil?
+        invalid_properties.push('invalid value for "plan_or_price", plan_or_price cannot be nil.')
       end
 
       invalid_properties
@@ -179,13 +88,8 @@ module OryClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @expires_at.nil?
-      return false if @id.nil?
-      return false if @identity.nil?
-      return false if @issued_at.nil?
-      return false if @request_url.nil?
-      return false if @state.nil?
-      return false if @ui.nil?
+      return false if @identity_id.nil?
+      return false if @plan_or_price.nil?
       true
     end
 
@@ -194,16 +98,8 @@ module OryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          active == o.active &&
-          expires_at == o.expires_at &&
-          id == o.id &&
-          identity == o.identity &&
-          issued_at == o.issued_at &&
-          request_url == o.request_url &&
-          return_to == o.return_to &&
-          state == o.state &&
-          type == o.type &&
-          ui == o.ui
+          identity_id == o.identity_id &&
+          plan_or_price == o.plan_or_price
     end
 
     # @see the `==` method
@@ -215,7 +111,7 @@ module OryClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, expires_at, id, identity, issued_at, request_url, return_to, state, type, ui].hash
+      [identity_id, plan_or_price].hash
     end
 
     # Builds the object from hash
