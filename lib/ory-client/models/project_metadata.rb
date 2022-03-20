@@ -14,22 +14,61 @@ require 'date'
 require 'time'
 
 module OryClient
-  class SubmitSelfServiceRecoveryFlowWithLinkMethodBody
-    # Sending the anti-csrf token is only required for browser login flows.
-    attr_accessor :csrf_token
+  class ProjectMetadata
+    # The Project's Creation Date
+    attr_accessor :created_at
 
-    # Email to Recover  Needs to be set when initiating the flow. If the email is a registered recovery email, a recovery link will be sent. If the email is not known, a email with details on what happened will be sent instead.  format: email
-    attr_accessor :email
+    attr_accessor :hosts
 
-    # Method supports `link` only right now.
-    attr_accessor :method
+    attr_accessor :id
+
+    # The project's name if set
+    attr_accessor :name
+
+    # The project's slug
+    attr_accessor :slug
+
+    # The state of the project.
+    attr_accessor :state
+
+    attr_accessor :subscription_id
+
+    # Last Time Project was Updated
+    attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'csrf_token' => :'csrf_token',
-        :'email' => :'email',
-        :'method' => :'method'
+        :'created_at' => :'created_at',
+        :'hosts' => :'hosts',
+        :'id' => :'id',
+        :'name' => :'name',
+        :'slug' => :'slug',
+        :'state' => :'state',
+        :'subscription_id' => :'subscription_id',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -41,9 +80,14 @@ module OryClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'csrf_token' => :'String',
-        :'email' => :'String',
-        :'method' => :'String'
+        :'created_at' => :'Time',
+        :'hosts' => :'Array<String>',
+        :'id' => :'String',
+        :'name' => :'String',
+        :'slug' => :'String',
+        :'state' => :'String',
+        :'subscription_id' => :'String',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -57,27 +101,49 @@ module OryClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::SubmitSelfServiceRecoveryFlowWithLinkMethodBody` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::ProjectMetadata` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::SubmitSelfServiceRecoveryFlowWithLinkMethodBody`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::ProjectMetadata`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'csrf_token')
-        self.csrf_token = attributes[:'csrf_token']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'hosts')
+        if (value = attributes[:'hosts']).is_a?(Array)
+          self.hosts = value
+        end
       end
 
-      if attributes.key?(:'method')
-        self.method = attributes[:'method']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'slug')
+        self.slug = attributes[:'slug']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'subscription_id')
+        self.subscription_id = attributes[:'subscription_id']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -85,12 +151,28 @@ module OryClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @email.nil?
-        invalid_properties.push('invalid value for "email", email cannot be nil.')
+      if @created_at.nil?
+        invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
 
-      if @method.nil?
-        invalid_properties.push('invalid value for "method", method cannot be nil.')
+      if @hosts.nil?
+        invalid_properties.push('invalid value for "hosts", hosts cannot be nil.')
+      end
+
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @state.nil?
+        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      end
+
+      if @updated_at.nil?
+        invalid_properties.push('invalid value for "updated_at", updated_at cannot be nil.')
       end
 
       invalid_properties
@@ -99,9 +181,25 @@ module OryClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @email.nil?
-      return false if @method.nil?
+      return false if @created_at.nil?
+      return false if @hosts.nil?
+      return false if @id.nil?
+      return false if @name.nil?
+      return false if @state.nil?
+      state_validator = EnumAttributeValidator.new('String', ["running", "halted"])
+      return false unless state_validator.valid?(@state)
+      return false if @updated_at.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] state Object to be assigned
+    def state=(state)
+      validator = EnumAttributeValidator.new('String', ["running", "halted"])
+      unless validator.valid?(state)
+        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
+      end
+      @state = state
     end
 
     # Checks equality by comparing each attribute.
@@ -109,9 +207,14 @@ module OryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          csrf_token == o.csrf_token &&
-          email == o.email &&
-          method == o.method
+          created_at == o.created_at &&
+          hosts == o.hosts &&
+          id == o.id &&
+          name == o.name &&
+          slug == o.slug &&
+          state == o.state &&
+          subscription_id == o.subscription_id &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -123,7 +226,7 @@ module OryClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [csrf_token, email, method].hash
+      [created_at, hosts, id, name, slug, state, subscription_id, updated_at].hash
     end
 
     # Builds the object from hash
