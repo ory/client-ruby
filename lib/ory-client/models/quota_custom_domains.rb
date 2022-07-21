@@ -14,15 +14,19 @@ require 'date'
 require 'time'
 
 module OryClient
-  # nolint:deadcode,unused
-  class SubmitSelfServiceLogoutFlowWithoutBrowserBody
-    # The Session Token  Invalidate this session token.
-    attr_accessor :session_token
+  class QuotaCustomDomains
+    attr_accessor :available_domains
+
+    attr_accessor :can_use
+
+    attr_accessor :used_domains
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'session_token' => :'session_token'
+        :'available_domains' => :'available_domains',
+        :'can_use' => :'can_use',
+        :'used_domains' => :'used_domains'
       }
     end
 
@@ -34,7 +38,9 @@ module OryClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'session_token' => :'String'
+        :'available_domains' => :'Integer',
+        :'can_use' => :'Boolean',
+        :'used_domains' => :'Integer'
       }
     end
 
@@ -48,19 +54,27 @@ module OryClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::SubmitSelfServiceLogoutFlowWithoutBrowserBody` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OryClient::QuotaCustomDomains` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::SubmitSelfServiceLogoutFlowWithoutBrowserBody`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OryClient::QuotaCustomDomains`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'session_token')
-        self.session_token = attributes[:'session_token']
+      if attributes.key?(:'available_domains')
+        self.available_domains = attributes[:'available_domains']
+      end
+
+      if attributes.key?(:'can_use')
+        self.can_use = attributes[:'can_use']
+      end
+
+      if attributes.key?(:'used_domains')
+        self.used_domains = attributes[:'used_domains']
       end
     end
 
@@ -68,17 +82,12 @@ module OryClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @session_token.nil?
-        invalid_properties.push('invalid value for "session_token", session_token cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @session_token.nil?
       true
     end
 
@@ -87,7 +96,9 @@ module OryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          session_token == o.session_token
+          available_domains == o.available_domains &&
+          can_use == o.can_use &&
+          used_domains == o.used_domains
     end
 
     # @see the `==` method
@@ -99,7 +110,7 @@ module OryClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [session_token].hash
+      [available_domains, can_use, used_domains].hash
     end
 
     # Builds the object from hash
