@@ -39,7 +39,7 @@ All URIs are relative to *https://playground.projects.oryapis.com*
 | [**list_identity_schemas**](V0alpha2Api.md#list_identity_schemas) | **GET** /schemas |  |
 | [**list_projects**](V0alpha2Api.md#list_projects) | **GET** /projects | List All Projects |
 | [**list_sessions**](V0alpha2Api.md#list_sessions) | **GET** /sessions | This endpoints returns all other active sessions that belong to the logged-in user. The current session can be retrieved by calling the &#x60;/sessions/whoami&#x60; endpoint. |
-| [**patch_project**](V0alpha2Api.md#patch_project) | **PATCH** /projects/{project_id} | Patch an Ory Cloud Project Configuration |
+| [**patch_project**](V0alpha2Api.md#patch_project) | **PATCH** /projects/{project_id} | Patch an Ory Cloud Project Configuration&#x60; |
 | [**purge_project**](V0alpha2Api.md#purge_project) | **DELETE** /projects/{project_id} | Irrecoverably Purge a Project |
 | [**remove_project_member**](V0alpha2Api.md#remove_project_member) | **DELETE** /projects/{project_id}/members/{member_id} | Remove a member associated with this project. This also sets their invite status to &#x60;REMOVED&#x60;. |
 | [**revoke_session**](V0alpha2Api.md#revoke_session) | **DELETE** /sessions/{id} | Calling this endpoint invalidates the specified session. The current session cannot be revoked. Session data are not deleted. |
@@ -2440,9 +2440,9 @@ No authorization required
 
 > <SuccessfulProjectUpdate> patch_project(project_id, opts)
 
-Patch an Ory Cloud Project Configuration
+Patch an Ory Cloud Project Configuration`
 
-This endpoints allows you to patch individual Ory Cloud Project configuration keys for Ory's services (identity, permission, ...). The configuration format is fully compatible with the open source projects for the respective services (e.g. Ory Kratos for Identity, Ory Keto for Permissions).  This endpoint expects the `version` key to be set in the payload. If it is unset, it will try to import the config as if it is from the most recent version.  If you have an older version of a configuration, you should set the version key in the payload!  While this endpoint is able to process all configuration items related to features (e.g. password reset), it does not support operational configuration items (e.g. port, tracing, logging) otherwise available in the open source.  For configuration items that can not be translated to Ory Cloud, this endpoint will return a list of warnings to help you understand which parts of your config could not be processed.
+Deprecated: Use the `patchProjectWithRevision` endpoint instead to specify the exact revision the patch was generated for.  This endpoints allows you to patch individual Ory Cloud Project configuration keys for Ory's services (identity, permission, ...). The configuration format is fully compatible with the open source projects for the respective services (e.g. Ory Kratos for Identity, Ory Keto for Permissions).  This endpoint expects the `version` key to be set in the payload. If it is unset, it will try to import the config as if it is from the most recent version.  If you have an older version of a configuration, you should set the version key in the payload!  While this endpoint is able to process all configuration items related to features (e.g. password reset), it does not support operational configuration items (e.g. port, tracing, logging) otherwise available in the open source.  For configuration items that can not be translated to Ory Cloud, this endpoint will return a list of warnings to help you understand which parts of your config could not be processed.
 
 ### Examples
 
@@ -2462,7 +2462,7 @@ opts = {
 }
 
 begin
-  # Patch an Ory Cloud Project Configuration
+  # Patch an Ory Cloud Project Configuration`
   result = api_instance.patch_project(project_id, opts)
   p result
 rescue OryClient::ApiError => e
@@ -2478,7 +2478,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Patch an Ory Cloud Project Configuration
+  # Patch an Ory Cloud Project Configuration`
   data, status_code, headers = api_instance.patch_project_with_http_info(project_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
