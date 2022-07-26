@@ -1,4 +1,4 @@
-# OryClient::InlineResponse503
+# OryClient::IsReady503Response
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::InlineResponse503.new(
+instance = OryClient::IsReady503Response.new(
   errors: null
 )
 ```

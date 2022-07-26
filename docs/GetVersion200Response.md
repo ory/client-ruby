@@ -1,4 +1,4 @@
-# OryClient::InlineResponse2001
+# OryClient::GetVersion200Response
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::InlineResponse2001.new(
+instance = OryClient::GetVersion200Response.new(
   version: null
 )
 ```

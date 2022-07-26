@@ -1,4 +1,4 @@
-# OryClient::InlineResponse200
+# OryClient::IsAlive200Response
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::InlineResponse200.new(
+instance = OryClient::IsAlive200Response.new(
   status: null
 )
 ```
