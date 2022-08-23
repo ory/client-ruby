@@ -82,6 +82,7 @@ docs/OAuth2Client.md
 docs/OAuth2ConsentRequest.md
 docs/OAuth2ConsentRequestOpenIDConnectContext.md
 docs/OAuth2ConsentSession.md
+docs/OAuth2ConsentSessionExpiresAt.md
 docs/OAuth2LoginRequest.md
 docs/OAuth2LogoutRequest.md
 docs/OAuth2TokenResponse.md
@@ -263,6 +264,7 @@ lib/ory-client/models/o_auth2_client.rb
 lib/ory-client/models/o_auth2_consent_request.rb
 lib/ory-client/models/o_auth2_consent_request_open_id_connect_context.rb
 lib/ory-client/models/o_auth2_consent_session.rb
+lib/ory-client/models/o_auth2_consent_session_expires_at.rb
 lib/ory-client/models/o_auth2_login_request.rb
 lib/ory-client/models/o_auth2_logout_request.rb
 lib/ory-client/models/o_auth2_token_response.rb
@@ -439,6 +441,7 @@ spec/models/o_auth2_api_error_spec.rb
 spec/models/o_auth2_client_spec.rb
 spec/models/o_auth2_consent_request_open_id_connect_context_spec.rb
 spec/models/o_auth2_consent_request_spec.rb
+spec/models/o_auth2_consent_session_expires_at_spec.rb
 spec/models/o_auth2_consent_session_spec.rb
 spec/models/o_auth2_login_request_spec.rb
 spec/models/o_auth2_logout_request_spec.rb
