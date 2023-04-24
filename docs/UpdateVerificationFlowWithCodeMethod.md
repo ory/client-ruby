@@ -1,4 +1,4 @@
-# OryClient::UpdateVerificationFlowWithCodeMethodBody
+# OryClient::UpdateVerificationFlowWithCodeMethod
 
 ## Properties
 
@@ -15,7 +15,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::UpdateVerificationFlowWithCodeMethodBody.new(
+instance = OryClient::UpdateVerificationFlowWithCodeMethod.new(
   code: null,
   csrf_token: null,
   email: null,
