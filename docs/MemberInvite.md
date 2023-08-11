@@ -1,4 +1,4 @@
-# OryClient::ProjectInvite
+# OryClient::MemberInvite
 
 ## Properties
 
@@ -19,7 +19,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::ProjectInvite.new(
+instance = OryClient::MemberInvite.new(
   created_at: null,
   id: null,
   invitee_email: null,
