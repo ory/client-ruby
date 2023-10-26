@@ -1,4 +1,4 @@
-# OryClient::CORS
+# OryClient::ProjectCors
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::CORS.new(
+instance = OryClient::ProjectCors.new(
   enabled: null,
   origins: null
 )
