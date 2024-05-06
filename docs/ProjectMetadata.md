@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **created_at** | **Time** | The Project&#39;s Creation Date |  |
-| **environment** | **String** | The environment of the project. prod Production dev Development |  |
+| **environment** | **String** | The environment of the project. prod Production stage Staging dev Development |  |
 | **hosts** | **Array&lt;String&gt;** |  |  |
 | **id** | **String** | The project&#39;s ID. | [readonly] |
 | **name** | **String** | The project&#39;s name if set |  |
@@ -14,6 +14,7 @@
 | **subscription_id** | **String** |  | [optional] |
 | **subscription_plan** | **String** |  | [optional] |
 | **updated_at** | **Time** | Last Time Project was Updated |  |
+| **workspace** | [**Workspace**](Workspace.md) |  | [optional] |
 | **workspace_id** | **String** |  | [optional] |
 
 ## Example
@@ -32,6 +33,7 @@ instance = OryClient::ProjectMetadata.new(
   subscription_id: null,
   subscription_plan: null,
   updated_at: null,
+  workspace: null,
   workspace_id: null
 )
 ```
