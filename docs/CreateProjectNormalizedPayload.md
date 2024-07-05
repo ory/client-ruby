@@ -8,6 +8,7 @@
 | **disable_account_experience_welcome_screen** | **Boolean** | Whether to disable the account experience welcome screen, which is hosted under &#x60;/ui/welcome&#x60;. | [optional] |
 | **enable_ax_v2** | **Boolean** | Whether the new account experience is enabled and reachable. | [optional] |
 | **environment** | **String** |  prod Production stage Staging dev Development |  |
+| **home_region** | **String** |  eu-central EUCentral us-east USEast us-west USWest global Global | [optional] |
 | **hydra_oauth2_allowed_top_level_claims** | **Array&lt;String&gt;** |  | [optional] |
 | **hydra_oauth2_client_credentials_default_grant_allowed_scope** | **Boolean** | Automatically grant authorized OAuth2 Scope in OAuth2 Client Credentials Flow.  Each OAuth2 Client is allowed to request a predefined OAuth2 Scope (for example &#x60;read write&#x60;). If this option is enabled, the full scope is automatically granted when performing the OAuth2 Client Credentials flow.  If disabled, the OAuth2 Client has to request the scope in the OAuth2 request by providing the &#x60;scope&#x60; query parameter.  Setting this option to true is common if you need compatibility with MITREid.  This governs the \&quot;oauth2.client_credentials.default_grant_allowed_scope\&quot; setting. | [optional] |
 | **hydra_oauth2_exclude_not_before_claim** | **Boolean** | Set to true if you want to exclude claim &#x60;nbf (not before)&#x60; part of access token.  This governs the \&quot;oauth2.exclude_not_before_claim\&quot; setting. | [optional] |
@@ -27,7 +28,8 @@
 | **hydra_secrets_system** | **Array&lt;String&gt;** |  | [optional] |
 | **hydra_serve_cookies_same_site_legacy_workaround** | **Boolean** | Configures the Ory Hydra Cookie Same Site Legacy Workaround  This governs the \&quot;serve.cookies.same_site_legacy_workaround\&quot; setting. | [optional] |
 | **hydra_serve_cookies_same_site_mode** | **String** | Configures the Ory Hydra Cookie Same Site Mode  This governs the \&quot;serve.cookies.same_site_mode\&quot; setting. | [optional] |
-| **hydra_strategies_access_token** | **String** | Defines access token type. jwt is a bad idea, see https://www.ory.sh/docs/hydra/advanced#json-web-tokens  This governs the \&quot;strategies.access_token\&quot; setting. opaque Oauth2AccessTokenStrategyOpaque jwt Oauth2AccessTokenStrategyJwt | [optional][default to &#39;opaque&#39;] |
+| **hydra_strategies_access_token** | **String** | Defines access token type  This governs the \&quot;strategies.access_token\&quot; setting. opaque Oauth2AccessTokenStrategyOpaque jwt Oauth2AccessTokenStrategyJwt | [optional][default to &#39;opaque&#39;] |
+| **hydra_strategies_jwt_scope_claim** | **String** | Define the claim to use as the scope in the access token.  This governs the \&quot;strategies.jwt.scope_claim\&quot; setting:  list: The scope claim is an array of strings named &#x60;scope&#x60;: &#x60;{ \&quot;scope\&quot;: [\&quot;read\&quot;, \&quot;write\&quot;] }&#x60; string: The scope claim is a space delimited list of strings named &#x60;scp&#x60;: &#x60;{ \&quot;scp\&quot;: \&quot;read write\&quot; }&#x60; both: The scope claim is both a space delimited list and an array of strings named &#x60;scope&#x60; and &#x60;scp&#x60;: &#x60;{ \&quot;scope\&quot;: [\&quot;read\&quot;, \&quot;write\&quot;], \&quot;scp\&quot;: \&quot;read write\&quot; }&#x60; list OAuth2JWTScopeClaimList string OAuth2JWTScopeClaimString both OAuth2JWTScopeClaimBoth | [optional][default to &#39;list&#39;] |
 | **hydra_strategies_scope** | **String** | Defines how scopes are matched. For more details have a look at https://github.com/ory/fosite#scopes  This governs the \&quot;strategies.scope\&quot; setting. exact Oauth2ScopeStrategyExact wildcard Oauth2ScopeStrategyWildcard | [optional][default to &#39;wildcard&#39;] |
 | **hydra_ttl_access_token** | **String** | This governs the \&quot;ttl.access_token\&quot; setting. | [optional][default to &#39;30m&#39;] |
 | **hydra_ttl_auth_code** | **String** | Configures how long refresh tokens are valid.  Set to -1 for refresh tokens to never expire. This is not recommended!  This governs the \&quot;ttl.auth_code\&quot; setting. | [optional][default to &#39;720h&#39;] |
@@ -219,6 +221,7 @@ instance = OryClient::CreateProjectNormalizedPayload.new(
   disable_account_experience_welcome_screen: null,
   enable_ax_v2: null,
   environment: null,
+  home_region: null,
   hydra_oauth2_allowed_top_level_claims: null,
   hydra_oauth2_client_credentials_default_grant_allowed_scope: null,
   hydra_oauth2_exclude_not_before_claim: null,
@@ -239,6 +242,7 @@ instance = OryClient::CreateProjectNormalizedPayload.new(
   hydra_serve_cookies_same_site_legacy_workaround: null,
   hydra_serve_cookies_same_site_mode: null,
   hydra_strategies_access_token: null,
+  hydra_strategies_jwt_scope_claim: null,
   hydra_strategies_scope: null,
   hydra_ttl_access_token: 1h,
   hydra_ttl_auth_code: 30m,
