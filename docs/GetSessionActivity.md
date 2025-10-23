@@ -1,4 +1,4 @@
-# OryClient::GetSessionActivityResponse
+# OryClient::GetSessionActivity
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::GetSessionActivityResponse.new(
+instance = OryClient::GetSessionActivity.new(
   data: null
 )
 ```

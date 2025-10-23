@@ -1,4 +1,4 @@
-# OryClient::GetMetricsEventTypesResponse
+# OryClient::GetMetricsEventAttributes
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::GetMetricsEventTypesResponse.new(
+instance = OryClient::GetMetricsEventAttributes.new(
   events: null
 )
 ```

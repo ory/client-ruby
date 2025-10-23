@@ -1,4 +1,4 @@
-# OryClient::InternalIsOwnerForProjectBySlugResponse
+# OryClient::InternalIsOwnerForProjectBySlug
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::InternalIsOwnerForProjectBySlugResponse.new(
+instance = OryClient::InternalIsOwnerForProjectBySlug.new(
   project_id: null
 )
 ```

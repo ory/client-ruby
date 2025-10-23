@@ -1,4 +1,4 @@
-# OryClient::GetProjectMetricsResponse
+# OryClient::GetProjectMetrics
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::GetProjectMetricsResponse.new(
+instance = OryClient::GetProjectMetrics.new(
   data: null
 )
 ```

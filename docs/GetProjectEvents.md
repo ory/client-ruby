@@ -1,4 +1,4 @@
-# OryClient::GetProjectEventsResponse
+# OryClient::GetProjectEvents
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::GetProjectEventsResponse.new(
+instance = OryClient::GetProjectEvents.new(
   events: null,
   page_token: null
 )

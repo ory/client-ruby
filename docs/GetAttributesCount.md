@@ -1,4 +1,4 @@
-# OryClient::GetAttributesCountResponse
+# OryClient::GetAttributesCount
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'ory-client'
 
-instance = OryClient::GetAttributesCountResponse.new(
+instance = OryClient::GetAttributesCount.new(
   data: null
 )
 ```
